@@ -1,5 +1,5 @@
 //
-//  SCRAnimationSequence.h
+//  SCRAnimationConcurrence.h
 //  SCRAnimationChain
 //
 //  Created by Joe Shang on 11/27/14.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SCRAnimationContainer.h"
 
-@interface SCRAnimationSequence : SCRAnimationContainer <SCRAnimationActionProtocol>
+@interface SCRAnimationConcurrence : SCRAnimationContainer <SCRAnimationActionProtocol>
 
 - (void)runWithCompletion:(SCRAnimationCompletionBlock)completion;
 - (NSTimeInterval)workTime;

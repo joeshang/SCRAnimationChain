@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, assign) UIViewAnimationOptions options;
 @property (nonatomic, copy)   SCRAnimationBlock animation;
+@property (nonatomic, copy)   SCRAnimationCompletionBlock nextPrepare;
 
 @end
 
@@ -23,6 +24,7 @@
                                      delay:(NSTimeInterval)delay
                                    options:(UIViewAnimationOptions)options
                                  animation:(SCRAnimationBlock)animation
+                               nextPrepare:(SCRAnimationCompletionBlock)nextPrepare
 {
     SCRAnimationAction *action = [[SCRAnimationAction alloc] init];
     
@@ -32,9 +34,22 @@
         action.delay = delay;
         action.options = options;
         action.animation = animation;
+        action.nextPrepare = nextPrepare;
     }
     
     return action;
+}
+
++ (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
+                                   options:(UIViewAnimationOptions)options
+                                 animation:(SCRAnimationBlock)animation
+                               nextPrepare:(SCRAnimationCompletionBlock)nextPrepare
+{
+    return [self actionWithDuration:duration
+                              delay:0.0
+                            options:options
+                          animation:animation
+                        nextPrepare:nextPrepare];
 }
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
@@ -44,7 +59,8 @@
     return [self actionWithDuration:duration
                               delay:0.0
                             options:options
-                          animation:animation];
+                          animation:animation
+                        nextPrepare:nil];
 }
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
@@ -53,9 +69,9 @@
     return [self actionWithDuration:duration
                               delay:0.0
                             options:0
-                          animation:animation];
+                          animation:animation
+                        nextPrepare:nil];
 }
-
 
 - (void)runWithCompletion:(SCRAnimationCompletionBlock)completion
 {
@@ -66,19 +82,20 @@
                     completion:^(BOOL finished){
                         if (finished)
                         {
-                            completion();
+                            if (self.nextPrepare)
+                            {
+                                self.nextPrepare();
+                            }
+                            
+                            if (completion)
+                            {
+                                completion();
+                            }
                         }
                     }];
 }
 
-- (void)cancel
-{
-    // The cancel method is using for canceling animation chain, no the animation block.
-    // Because the animation block is a black box in SCRAnimationAction, so it's your
-    // responsibility to can cancel animation block by calling [view.layer removeAllAnimations]
-}
-
-- (NSTimeInterval)overallTime
+- (NSTimeInterval)workTime
 {
     return (self.delay + self.duration);
 }

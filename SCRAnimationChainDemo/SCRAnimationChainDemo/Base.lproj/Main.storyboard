@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,31 +17,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYZ-7n-VFA">
-                                <rect key="frame" x="16" y="313" width="46" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMV-BO-1w4">
+                                <rect key="frame" x="16" y="20" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="10E-Pf-mfm"/>
-                                    <constraint firstAttribute="width" constant="90" id="bPC-0o-aIk"/>
+                                    <constraint firstAttribute="width" constant="30" id="PvY-Ba-o4g"/>
+                                    <constraint firstAttribute="height" constant="30" id="gba-uN-fX2"/>
                                 </constraints>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="10E-Pf-mfm"/>
-                                        <exclude reference="bPC-0o-aIk"/>
+                                        <exclude reference="gba-uN-fX2"/>
+                                        <exclude reference="PvY-Ba-o4g"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="10E-Pf-mfm"/>
-                                        <include reference="bPC-0o-aIk"/>
+                                        <include reference="gba-uN-fX2"/>
+                                        <include reference="PvY-Ba-o4g"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <action selector="onCancelButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pIi-8h-d5Z"/>
-                                </connections>
-                            </button>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-21-bV2">
+                                <rect key="frame" x="16" y="20" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="AY3-Qh-jSH"/>
+                                    <constraint firstAttribute="height" constant="30" id="kya-cd-9ro"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kya-cd-9ro"/>
+                                        <exclude reference="AY3-Qh-jSH"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="kya-cd-9ro"/>
+                                        <include reference="AY3-Qh-jSH"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-FS-N1U">
+                                <rect key="frame" x="16" y="20" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="loD-EG-y4c"/>
+                                    <constraint firstAttribute="width" constant="30" id="wa3-Es-A0m"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="loD-EG-y4c"/>
+                                        <exclude reference="wa3-Es-A0m"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="loD-EG-y4c"/>
+                                        <include reference="wa3-Es-A0m"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j7-Pr-Djn">
                                 <rect key="frame" x="16" y="247" width="46" height="30"/>
                                 <constraints>
@@ -66,59 +102,59 @@
                                     <action selector="onAnimateButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="51M-e5-QhD"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-FS-N1U">
-                                <rect key="frame" x="16" y="20" width="64" height="64"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="loD-EG-y4c"/>
-                                    <constraint firstAttribute="width" constant="30" id="wa3-Es-A0m"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="loD-EG-y4c"/>
-                                        <exclude reference="wa3-Es-A0m"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="loD-EG-y4c"/>
-                                        <include reference="wa3-Es-A0m"/>
-                                    </mask>
-                                </variation>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="6j7-Pr-Djn" secondAttribute="centerX" id="5om-yL-yKu"/>
                             <constraint firstItem="6j7-Pr-Djn" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="280" id="AEr-x1-tNd"/>
+                            <constraint firstItem="kMV-BO-1w4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="115" id="Fq1-Mh-Vgc"/>
                             <constraint firstItem="9PY-FS-N1U" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="IpF-gR-LBx"/>
-                            <constraint firstAttribute="centerX" secondItem="JYZ-7n-VFA" secondAttribute="centerX" id="PSx-QL-X24"/>
+                            <constraint firstItem="K3R-21-bV2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="115" id="NK7-rw-76s"/>
+                            <constraint firstItem="K3R-21-bV2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="30" id="Ul3-4p-fUM"/>
                             <constraint firstAttribute="centerX" secondItem="9PY-FS-N1U" secondAttribute="centerX" id="ZFp-Re-8Li"/>
-                            <constraint firstItem="JYZ-7n-VFA" firstAttribute="top" secondItem="6j7-Pr-Djn" secondAttribute="bottom" constant="20" id="rUT-Hn-eYh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kMV-BO-1w4" secondAttribute="trailing" constant="30" id="obb-3K-HPP"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="kMV-BO-1w4"/>
+                                <exclude reference="K3R-21-bV2"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="NK7-rw-76s"/>
+                                <exclude reference="Ul3-4p-fUM"/>
                                 <exclude reference="IpF-gR-LBx"/>
                                 <exclude reference="ZFp-Re-8Li"/>
                                 <exclude reference="5om-yL-yKu"/>
                                 <exclude reference="AEr-x1-tNd"/>
-                                <exclude reference="PSx-QL-X24"/>
-                                <exclude reference="rUT-Hn-eYh"/>
+                                <exclude reference="Fq1-Mh-Vgc"/>
+                                <exclude reference="obb-3K-HPP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="kMV-BO-1w4"/>
+                                <include reference="K3R-21-bV2"/>
+                            </mask>
                             <mask key="constraints">
+                                <include reference="NK7-rw-76s"/>
+                                <include reference="Ul3-4p-fUM"/>
                                 <include reference="IpF-gR-LBx"/>
                                 <include reference="ZFp-Re-8Li"/>
                                 <include reference="5om-yL-yKu"/>
                                 <include reference="AEr-x1-tNd"/>
-                                <include reference="PSx-QL-X24"/>
-                                <include reference="rUT-Hn-eYh"/>
+                                <include reference="Fq1-Mh-Vgc"/>
+                                <include reference="obb-3K-HPP"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="box" destination="9PY-FS-N1U" id="wiX-AH-v5R"/>
+                        <outlet property="animateButton" destination="6j7-Pr-Djn" id="Wb1-eE-M09"/>
+                        <outlet property="leftBox" destination="K3R-21-bV2" id="Yav-XV-QMs"/>
+                        <outlet property="leftBoxVertSpace" destination="NK7-rw-76s" id="u08-aW-j5k"/>
+                        <outlet property="midBox" destination="9PY-FS-N1U" id="Iyg-1P-DP8"/>
+                        <outlet property="midBoxVertSpace" destination="IpF-gR-LBx" id="gFV-UN-RLT"/>
+                        <outlet property="rightBox" destination="kMV-BO-1w4" id="1ZX-0f-rjI"/>
+                        <outlet property="rightBoxVertSpace" destination="Fq1-Mh-Vgc" id="Bdi-kd-rfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

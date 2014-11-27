@@ -18,8 +18,10 @@ typedef void (^SCRAnimationCompletionBlock)(void);
 @required
 
 - (void)runWithCompletion:(SCRAnimationCompletionBlock)completion;
-- (void)cancel;
-- (NSTimeInterval)overallTime;
+- (NSTimeInterval)workTime;
+
+// There is no cancel method because animation block is a black box in SCRAnimationAction,
+// so it's your responsibility to can cancel animation by calling [view.layer removeAllAnimations]
 
 @optional
 

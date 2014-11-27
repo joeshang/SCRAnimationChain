@@ -10,10 +10,16 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, weak) IBOutlet UIView *box;
+@property (nonatomic, weak) IBOutlet UIView *midBox;
+@property (nonatomic, weak) IBOutlet UIView *leftBox;
+@property (nonatomic, weak) IBOutlet UIView *rightBox;
+@property (nonatomic, weak) IBOutlet UIButton *animateButton;
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *midBoxVertSpace;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *leftBoxVertSpace;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *rightBoxVertSpace;
 
 - (IBAction)onAnimateButtonClicked:(id)sender;
-- (IBAction)onCancelButtonClicked:(id)sender;
 
 @end
 
