@@ -17,13 +17,13 @@ typedef void (^SCRAnimationBlock)(void);
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
                                      delay:(NSTimeInterval)delay
                                    options:(UIViewAnimationOptions)options
-                                 animation:(SCRAnimationBlock)animation
-                               nextPrepare:(SCRAnimationCompletionBlock)nextPrepare;
+                                   prepare:(SCRAnimationBlock)prepare
+                                 animation:(SCRAnimationBlock)animation;
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
                                    options:(UIViewAnimationOptions)options
-                                 animation:(SCRAnimationBlock)animation
-                               nextPrepare:(SCRAnimationCompletionBlock)nextPrepare;
+                                   prepare:(SCRAnimationBlock)prepare
+                                 animation:(SCRAnimationBlock)animation;
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
                                    options:(UIViewAnimationOptions)options

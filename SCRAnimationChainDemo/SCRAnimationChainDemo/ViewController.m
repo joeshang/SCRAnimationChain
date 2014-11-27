@@ -79,16 +79,16 @@
                                                              self.midBox.transform = CGAffineTransformScale(self.midBox.transform, 1.5, 1.5);
                                                          }]];
         [sequence addAction:[SCRAnimationAction actionWithDuration:1
-                                                           options:0
                                                          animation:^{
                                                              self.midBox.transform = CGAffineTransformIdentity;
-                                                         }
-                                                       nextPrepare:^{
-                                                           self.leftBoxVertSpace.constant = self.leftBoxOriginVertSpaceConstant;
-                                                           self.rightBoxVertSpace.constant = self.rightBoxOriginVertSpaceConstant;
-                                                       }]];
+                                                         }]];
         SCRAnimationConcurrence *concurrence = [[SCRAnimationConcurrence alloc] init];
         [concurrence addAction:[SCRAnimationAction actionWithDuration:3
+                                                              options:0
+                                                              prepare:^{
+                                                                  self.leftBoxVertSpace.constant = self.leftBoxOriginVertSpaceConstant;
+                                                                  self.rightBoxVertSpace.constant = self.rightBoxOriginVertSpaceConstant;
+                                                              }
                                                             animation:^{
                                                                 [self.view layoutIfNeeded];
                                                             }]];

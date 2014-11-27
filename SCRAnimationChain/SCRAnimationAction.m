@@ -14,7 +14,7 @@
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, assign) UIViewAnimationOptions options;
 @property (nonatomic, copy)   SCRAnimationBlock animation;
-@property (nonatomic, copy)   SCRAnimationCompletionBlock nextPrepare;
+@property (nonatomic, copy)   SCRAnimationBlock prepare;
 
 @end
 
@@ -23,8 +23,8 @@
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
                                      delay:(NSTimeInterval)delay
                                    options:(UIViewAnimationOptions)options
+                                   prepare:(SCRAnimationBlock)prepare
                                  animation:(SCRAnimationBlock)animation
-                               nextPrepare:(SCRAnimationCompletionBlock)nextPrepare
 {
     SCRAnimationAction *action = [[SCRAnimationAction alloc] init];
     
@@ -33,8 +33,8 @@
         action.duration = duration;
         action.delay = delay;
         action.options = options;
+        action.prepare = prepare;
         action.animation = animation;
-        action.nextPrepare = nextPrepare;
     }
     
     return action;
@@ -42,14 +42,14 @@
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
                                    options:(UIViewAnimationOptions)options
+                                   prepare:(SCRAnimationBlock)prepare
                                  animation:(SCRAnimationBlock)animation
-                               nextPrepare:(SCRAnimationCompletionBlock)nextPrepare
 {
     return [self actionWithDuration:duration
                               delay:0.0
                             options:options
-                          animation:animation
-                        nextPrepare:nextPrepare];
+                            prepare:prepare
+                          animation:animation];
 }
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
@@ -59,8 +59,8 @@
     return [self actionWithDuration:duration
                               delay:0.0
                             options:options
-                          animation:animation
-                        nextPrepare:nil];
+                            prepare:nil
+                          animation:animation];
 }
 
 + (SCRAnimationAction *)actionWithDuration:(NSTimeInterval)duration
@@ -69,12 +69,17 @@
     return [self actionWithDuration:duration
                               delay:0.0
                             options:0
-                          animation:animation
-                        nextPrepare:nil];
+                            prepare:nil
+                          animation:animation];
 }
 
 - (void)runWithCompletion:(SCRAnimationCompletionBlock)completion
 {
+    if (self.prepare)
+    {
+        self.prepare();
+    }
+    
    [UIView animateWithDuration:self.duration
                          delay:self.delay
                        options:self.options
@@ -82,11 +87,6 @@
                     completion:^(BOOL finished){
                         if (finished)
                         {
-                            if (self.nextPrepare)
-                            {
-                                self.nextPrepare();
-                            }
-                            
                             if (completion)
                             {
                                 completion();
