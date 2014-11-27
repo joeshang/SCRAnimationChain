@@ -7,9 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "SCRAnimationAction.h"
-#import "SCRAnimationSequence.h"
-#import "SCRAnimationConcurrence.h"
+#import "SCRAnimationChain.h"
 
 @interface ViewController ()
 
